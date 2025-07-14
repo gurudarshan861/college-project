@@ -22,7 +22,7 @@ def load_user(user_id):
 #this whole login manager stuff is written just to get the name of the current user who has logged in
 
 #this is used to connect flask to database
-app.config['SQLALCHEMY_DATABASE_URI']='mysql://root@localhost/bbms' 
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root@localhost/bbms' 
 db=SQLAlchemy(app)
 
 #here we will create db models that is tables
