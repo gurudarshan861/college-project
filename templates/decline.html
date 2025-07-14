@@ -1,0 +1,48 @@
+{% extends 'acommon.html' %}
+{% block title %}
+Declined Requests
+{% endblock title %}
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+{{message}}
+<button type="button" class="close" data-dismiss="alert aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<table class="table mt-3">
+<thead class="table-dark">
+<tr>
+<th scope="col">REQUEST ID</th>
+<th scope="col">HOSPITAL NAME</th>
+<th scope="col">HOSPITAL ADDRESS</th>
+<th scope="col">PHONE NUMBER</th>
+<th scope="col">EMAIL</th>
+<th scope="col">BLOOD GROUP</th>
+<th scope="col">NO OF PACKETS</th>
+<th scope="col">STATUS</th>
+</tr>
+</thead>
+<tbody>
+{% for post in query3 %}
+<tr>
+<th scope="row">{{post.r_id}}</th>
+<td>{{post.Hospital_Name}}</td>
+<td>{{post.Hospital_Address}}</td>
+<td>{{post.Phone_Number}}</td>
+<td>{{post.Email}}</td>
+<td>{{post.Blood_Group}}</td>
+<td>{{post.Number_Of_Packets}}</td>
+<td>{{post.Status}}</td>  
+</tr>
+{% endfor %}
+</tbody>
+</table>
+ {% endblock body %}

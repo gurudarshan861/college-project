@@ -1,0 +1,82 @@
+{% extends 'common.html' %}
+{% block title %}
+LOGIN
+{% endblock title %}
+{% block body %}
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <!--mt is space from top margin given -->
+      </div>
+      <div class="col-md-4 jumbotron bg-light">
+        <!--jumbotron is used for backgroung color br is used to give a line space-->
+        <h4 class="text-center bg-success text-white container mt-4">Login</h4>
+        <br>
+        <!--the below code for displaying the messages that occured while using database-->
+        <!--like email already exists and etc the code is till div-->
+        <!--in this code category is nothing but color and messages is used for extracting messages from program-->
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        <form action="/dashboard" method="POST">
+    
+<!--<div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+            <!--will explain about username-->
+            <!--required at the end tells us that we cannot signup unless we enter something in username same for all-->
+          <!--</div>-->
+    
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" required >
+            <div id="emailHelp" class="form-text">We'll never share you r email with anyone else.</div>
+          </div>
+    
+          <!--label for i am changing it to email nothing much blue color form is coming because of class form control-->
+          <!--here id means if i click on email address text it taker me to the box to enter the text make sure both id and for should be same -->
+          <!--and type here is email if i type text without @gmail.com then it says me to enter valid email including @gmail.com  -->
+          <!--if i change this type to number it taker only number and date takes date in dd-mm-yy format and text accepts all -->
+          <!--we don't need this aria-describedby="emailHelp" so i removed this -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <!--use of type password is the text  will not be visible -->
+          </div>
+          <!--<div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> i don't need this checkbox-->
+          <!--<button type="submit" class="btn btn-success btn-sm btn-block">Login</button>-->
+          <div class="d-grid gap-2">
+            <button class="btn btn-success container mt-4" type="submit">Login</button>
+          </div>
+        </form>
+        <br>Not a user <a href="/signup">Signup</a>
+        <br>
+        <br>
+        
+      </div>
+    
+      <div class="col-md-4">
+        <!--this is space from given -->
+      </div>
+    
+    
+    
+    </div>
+    </div>
+    
+{% endblock body %}

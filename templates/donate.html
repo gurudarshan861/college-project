@@ -1,0 +1,100 @@
+{% extends 'acommon.html' %}
+{% block title %}
+Blood Donation
+{% endblock title %}
+{% block body %}
+      <div class="container mt-3">
+        <div class="row">
+            <!--<div class="col-md-2">
+            </div>-->
+
+             <div class="col-md-8">
+
+
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+                <form class="jumbotron bg-light" action="/donate" method="post">
+                    <div class="mb-3 jumbotron">
+                        <h1 class="jumbotron  bg-success">BLOOD DONATION</h1>
+                        <br>
+                        <label for="donor_id" class="form-label">Donor Id</label>
+                             <select class="form-select" id="donor_id" name="donor_id"  required>
+                               <option selected>SELECT THE DETAILS OF REGISTERED DONORS REFERING THE TABLE</option>
+                               {% for a in query  %}
+                               <option value="{{a.D_ID}}">{{a.D_ID}}</option>
+                               {% endfor %}
+                              </select>
+                               <br>
+                        
+                        <label for="donor_name" class="form-label" >Donor Name</label>
+                              <select class="form-select" id="donor_name" name="donor_name"  required>
+                                <option selected>SELECT THE DETAILS OF REGISTERED DONORS REFERING THE TABLE</option>
+                                {% for b in query1  %}
+                                <option value="{{b.DNAME}}">{{b.DNAME}}</option>
+                                {% endfor %}
+                              </select>
+                                <br>
+
+                      <label for="Blood_Group" class="form-label">Blood Group</label>
+                      <select class="form-select" id="Blood_Group" name="Blood_Group"  required>
+                        <option selected>SELECT THE DETAILS OF REGISTERED DONORS REFERING THE TABLE</option>
+                                {% for a in query2  %}
+                                <option value="{{a.BLOOD_GROUP}}">{{a.BLOOD_GROUP}}</option>
+                                {% endfor %}
+
+                 
+                      </select>
+                 </div>
+                 <br>
+                 <label for="Packets_Donated" class="form-label">Packets_Donated(Units)</label>
+                        <input type="number" class="form-control" id="Packets_Donated" name="Packets_Donated" required>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            
+                   <br>
+                   
+                  
+    
+                 
+
+            </div>
+
+            <div class="col-md-4">
+              <table class="table mt-3 jumbotron  bg-light">
+                <thead class="table-dark">
+                  <h1 class="jumbotron  bg-success">REGISTERED DONOR DETAILS</h1>
+                  <tr>
+                    <th scope="col">DONOR ID</th>
+                    <th scope="col">DONOR NAME</th>
+                    <th scope="col">BLOOD GROUP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for post in query3 %}
+                  <tr>
+                    <th scope="row">{{post.D_ID}}</th>
+                    <td>{{post.DNAME}}</td>
+                    <td>{{post.BLOOD_GROUP}}</td>
+                     
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+
+            </div>
+
+
+{% endblock body %}
+ 

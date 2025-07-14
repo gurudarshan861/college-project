@@ -1,0 +1,56 @@
+{% extends 'acommon.html' %}
+{% block title %}
+Donor Logs
+{% endblock title %}
+{% block body %}
+
+
+
+<table class="table mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">DONOR ID</th>
+        <th scope="col">DONOR NAME</th>
+        <th scope="col">GENDER</th>
+        <th scope="col">PHONE NUMBER</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">AGE</th>
+        <th scope="col">WEIGHT</th>
+        <th scope="col">ADDRESS</th>
+        <th scope="col">DISEASE</th>
+        <th scope="col">BLOOD GROUP</th>
+        <th scope="col">DONOR REGISTRATION</th>
+        <th scope="col">EMPLOYEE ID</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for post in query %}
+      <tr>
+        <th scope="row">{{post.D_ID}}</th>
+        <td>{{post.DNAME}}</td>
+        <td>{{post.GENDER}}</td>
+        <td>{{post.DPHONENUMBER	}}</td>
+        <td>{{post.DEMAIL }}</td>
+        <td>{{post.AGE}}</td>
+        <td>{{post.WEIGHT}}</td>
+        <td>{{post.ADDRESS}}</td>
+        <td>{{post.DISEASE}}</td>
+        <td>{{post.BLOOD_GROUP}}</td>
+        <td>{{post.DONOR_DATE}}</td>
+        <td>{{post.E_ID}}</td>
+         
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
